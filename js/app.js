@@ -1,6 +1,5 @@
-
-function updateCartNumber(isValueIncreasing){
-    const cartInput = document.getElementById('cart-number');
+function updateCartNumber(product, price, isValueIncreasing){
+    const cartInput = document.getElementById(product + '-number');
     let cartValue = cartInput.value;
     
     if(isValueIncreasing == true){
@@ -12,14 +11,29 @@ function updateCartNumber(isValueIncreasing){
     cartInput.value = cartValue;
 
     // update cart price
-    const cartPrice = document.getElementById('cart-price');
-    cartPrice.innerText = cartValue * 89;
+    const cartPrice = document.getElementById(product + '-price');
+    cartPrice.innerText = cartValue * price;
 }
 
+// handle phone price increase and decrease for phone!
 document.getElementById('button-plus').addEventListener('click', function(){
-    updateCartNumber(true);
+    updateCartNumber('cart', 890, true);
 });
 
 document.getElementById('button-minus').addEventListener('click', function(){
-    updateCartNumber(false);
+    updateCartNumber('cart', 890, false);
 });
+
+// handle increase decrease for case!
+document.getElementById('case-minus').addEventListener('click', function(){
+    updateCartNumber('case', 59, false);
+});
+
+document.getElementById('case-plus').addEventListener('click', function(){
+    updateCartNumber('case', 59, true);
+});
+
+
+
+
+
